@@ -13,7 +13,7 @@ const bot = new Telegraf(config.telegramToken);
 
 bot.start((ctx) => ctx.reply('Welcome, the bot is still WIP'));
 bot.help((ctx) => ctx.reply('The bot is still WIP'));
-bot.ping((ctx) => ctx.reply('Pong 🏓'));
+bot.command('ping', (ctx) => ctx.reply('Pong 🏓'));
 
 bot.launch();
 
