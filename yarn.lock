@@ -37,9 +37,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "freestuff-bot-telegram@workspace:."
   dependencies:
+    freestuff: ^1.2.0
     telegraf: ^4.0.1
   languageName: unknown
   linkType: soft
+
+"freestuff@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "freestuff@npm:1.2.0"
+  checksum: 245581294ab16c77f2438eb3bcc5c52348bfe1e798c812ff7e1203a0945112799d315029990728be118b6736b208ac3e3cbe96a057a9436bb8ee5e4bbacf2f47
+  languageName: node
+  linkType: hard
 
 "minimist@npm:^1.2.5":
   version: 1.2.5

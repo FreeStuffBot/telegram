@@ -19,6 +19,7 @@
   "homepage": "https://github.com/FreeStuffBot/telegram#readme",
   "private": true,
   "dependencies": {
+    "freestuff": "^1.2.0",
     "telegraf": "^4.0.1"
   }
 }
