@@ -1,0 +1,21 @@
+{
+  "name": "freestuff-bot-telegram",
+  "version": "0.0.1",
+  "description": "The WIP official Telegram Bot for FreeStuffBot.xyz",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FreeStuffBot/telegram.git"
+  },
+  "author": "FreeStuff Bot Team",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/FreeStuffBot/telegram/issues"
+  },
+  "homepage": "https://github.com/FreeStuffBot/telegram#readme",
+  "private": true
+}
