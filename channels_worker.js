@@ -113,6 +113,7 @@ const server = http.createServer((req, res) => {
         if (event.secret !== config.freeStuffAPI.webhook.secret) res.writeHead(403).end(res.statusMessage); //Forbidden
     
         if (event.event === 'free_games') fetchAndAnnounce(event.data).catch(console.error);
+        if (event.event === 'webhook_test') console.log('Received a webhook test event', JSON.stringify(event.data));
 
         res.writeHead(200).end(res.statusMessage); //OK
     });
