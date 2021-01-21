@@ -28,6 +28,7 @@ api.ping().then(() => console.log('API PONG!')).catch(() => console.log('failed 
 bot.start((ctx) => ctx.reply('Welcome, the bot is still WIP'));
 bot.help((ctx) => ctx.reply('The bot is still WIP'));
 bot.command('ping', (ctx) => ctx.reply('Pong 🏓'));
+bot.on('channel_post', (ctx) => console.log("CHANNEL_ID", ctx.channelPost.chat.id));
 
 bot.launch();
 
