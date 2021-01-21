@@ -67,7 +67,7 @@ async function fetchAndAnnounce(gamesIds) {
         await announceGame(gameDetails);
     }
 
-    console.log("Fetched and announced the games.")
+    console.log("Fetched and announced the games.");
 }
 
 const http = require('http');
@@ -79,7 +79,7 @@ const server = http.createServer((req, res) => {
     const contentType = req.headers["content-type"];
     const contentLength = parseInt(req.headers["content-length"]);
 
-    if (contentType !== 'application/json') return res.writeHead(405).end(res.statusMessage); //Bad request
+    if (!contentType || !contentType.startsWith('application/json')) return res.writeHead(405).end(res.statusMessage); //Bad request
     if (!contentLength || contentLength > 1024) return res.writeHead(405).end(res.statusMessage); //Bad request
 
     let buffer = Buffer.alloc(contentLength);
@@ -116,6 +116,8 @@ const server = http.createServer((req, res) => {
 
         res.writeHead(200).end(res.statusMessage); //OK
     });
+
+    req.resume();
 });
 
 server.listen(config.freeStuffAPI.webhook.port);
