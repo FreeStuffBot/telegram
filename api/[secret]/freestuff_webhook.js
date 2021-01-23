@@ -16,6 +16,7 @@ module.exports = async (req, res) => {
         await handleFreeStuffAPIEvent(req.body);
         res.writeHead(200).end(res.statusMessage); //OK
     } catch (error) {
+        console.error(error);
         res.writeHead(500).end(res.statusMessage + '\n' + toString(error)); //Internal server error
     }
 }
