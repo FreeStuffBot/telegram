@@ -110,6 +110,3 @@ dist
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
-
-# Bot configuration
-config.js
