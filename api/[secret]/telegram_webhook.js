@@ -3,7 +3,7 @@ const bot = require('../../lib/bot');
 
 module.exports = async (req, res) => {
     const secret = req.query.secret;
-    if (secret !== config.telegram.secret) return res.writeHead(403).end(res.statusMessage); //Forbidden
+    if (secret !== config.telegram.token) return res.writeHead(403).end(res.statusMessage); //Forbidden
     if (req.method !== 'POST') return res.writeHead(405).end(res.statusMessage); //Bad request
 
     try {
