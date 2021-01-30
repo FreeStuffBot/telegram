@@ -26,16 +26,16 @@ module.exports = {
         },
 
         announcements: {
-            ['en-US']: '@freestuff_english_us_561020', //https://t.me/freestuff_english_us_561020
-            ['en-GB']: '@freestuff_english_gb_637292', //https://t.me/freestuff_english_gb_637292
-            ['pt-BR']: '@freestuff_portuguese_brazil_797843', //https://t.me/freestuff_portuguese_brazil_797843
-            ['es-ES']: '@freestuff_spanish_latam_764053', //https://t.me/freestuff_spanish_latam_764053
-            ['tr']: -1001221998355, //https://t.me/joinchat/SNY3E9OOi8Jn1mO3
-            ['it-IT']: -1001276996569, //https://t.me/joinchat/TB1r2WpVKsZIoeFr
-            ['de-DE']: '@freestuff_german_370794', //https://t.me/freestuff_german_370794'
-            ['fr-FR']: -1001256507523, //https://t.me/joinchat/SuTIg0WrXoVHNE4M
-            ['ar-SY']: '@freestuff_arabic_936767', //https://t.me/freestuff_arabic_936767
-            ['pl']: -1001459962181, //https://t.me/joinchat/VwVBRd2kdf0onVUz
+            ['en-US']: '@freestuff_english_us', //https://t.me/freestuff_english_us
+            ['en-GB']: '@freestuff_english_gb', //https://t.me/freestuff_english_gb
+            ['pt-BR']: '@freestuff_portuguese_brazil', //https://t.me/freestuff_portuguese_brazil
+            ['es-ES']: '@freestuff_spanish_latam', //https://t.me/freestuff_spanish_latam
+            ['tr']: '@freestuff_turkish', //https://t.me/freestuff_turkish
+            ['it-IT']: '@freestuff_italian', //https://t.me/freestuff_italian
+            ['de-DE']: '@freestuff_german', //https://t.me/freestuff_german'
+            ['fr-FR']: '@freestuff_french', //https://t.me/freestuff_french
+            ['ar-SY']: '@freestuff_arabic', //https://t.me/freestuff_arabic
+            ['pl']: '@freestuff_polish', //https://t.me/freestuff_polish
 
         }
     },
