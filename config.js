@@ -20,15 +20,15 @@ module.exports = {
 
     channels: {
         testing: {
-            ['english-us']: '@freestuff_english_us_dev_606026'
+            ['en-US']: '@freestuff_dev_606026',
         },
 
         non_trash: {
-            ['english-us']: '@freestuff_english_us_561020'
+            ['en-US']: '@freestuff_english_us_561020'
         },
 
         trash: {
-            ['english-us']: '@freestuff_english_us_trash_744068'
+            ['en-US']: '@freestuff_english_us_trash_744068'
         }
     },
 
