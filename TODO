@@ -1,0 +1,7 @@
+☐ Use TypeScript.
+☐ Fix the game store id being displayed instead of the name.
+☐ Use the language formatting option of the FreeStuff API.
+☐ Filter trash games and post them into their own channel.
+☐ Create the other languages channels.
+☐ Create the interactive menu for viewing the available games channels.
+☐ Enable to bot to run in hosted mode (with a server), while still able to work as a server-less bot.
