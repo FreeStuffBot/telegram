@@ -1,5 +1,5 @@
-const config = require('../../config');
-const { handleFreeStuffAPIEvent } = require('../../lib/announcements');
+const config = require('../config');
+const { handleFreeStuffAPIEvent } = require('../lib/announcements');
 
 module.exports = async (req, res) => {
     const secret = req.query.secret;

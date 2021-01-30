@@ -1,5 +1,5 @@
-const config = require('../../config');
-const bot = require('../../lib/bot');
+const config = require('../config');
+const bot = require('../lib/bot');
 
 module.exports = async (req, res) => {
     const secret = req.query.secret;
