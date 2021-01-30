@@ -4,6 +4,8 @@ const { Telegraf } = require('telegraf');
 const bot = new Telegraf(config.telegram.token);
 const domainName = 'https://freestuff-telegram.vercel.app';
 
-bot.telegram.setWebhook(`${domainName}/api/${config.telegram.token}/telegram_webhook`)
+bot.telegram.setWebhook(`${domainName}/api/${config.telegram.token}/telegram_webhook`, {
+    allowed_updates: ["message"]
+})
     .then(() => console.log('The webhook has been set successfully ✅'))
     .catch(console.error);
