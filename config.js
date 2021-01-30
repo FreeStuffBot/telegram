@@ -32,11 +32,10 @@ module.exports = {
             ['es-ES']: '@freestuff_spanish_latam', //https://t.me/freestuff_spanish_latam
             ['tr']: '@freestuff_turkish', //https://t.me/freestuff_turkish
             ['it-IT']: '@freestuff_italian', //https://t.me/freestuff_italian
-            ['de-DE']: '@freestuff_german', //https://t.me/freestuff_german'
+            ['de-DE']: '@freestuff_german', //https://t.me/freestuff_german
             ['fr-FR']: '@freestuff_french', //https://t.me/freestuff_french
             ['ar-SY']: '@freestuff_arabic', //https://t.me/freestuff_arabic
             ['pl']: '@freestuff_polish', //https://t.me/freestuff_polish
-
         }
     },
 
@@ -52,5 +51,18 @@ module.exports = {
         'fr-FR',
         'ar-SY',
         'pl',
-    ]
+    ],
+
+    menu: {
+        ['en-US']: 'English (USA) 🇺🇸',
+        ['en-GB']: 'English (Europe) 🇬🇧',
+        ['pt-BR']: 'Português 🇧🇷',
+        ['es-ES']: 'Español Latam 🇪🇸',
+        ['tr']: 'Türkçe 🇹🇷',
+        ['it-IT']: 'Italiano 🇮🇹',
+        ['de-DE']: 'Deutsch 🇩🇪', 
+        ['fr-FR']: 'Français 🇫🇷',
+        ['ar-SY']: 'العربية 🇦🇪',
+        ['pl']: 'Polski 🇵🇱',
+    }
 }
