@@ -24,8 +24,9 @@ module.exports = {
             ['de-DE']: '@freestuff_dev_606026'
         },
 
-            ['en-US']: '@freestuff_english_us_561020'
         announcements: {
+            ['en-US']: '@freestuff_english_us_561020',
+            ['de-DE']: '@freestuff_german_370794'
         }
     },
 
