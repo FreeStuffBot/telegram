@@ -21,6 +21,7 @@ module.exports = {
     channels: {
         testing: {
             ['en-US']: '@freestuff_dev_606026',
+            ['de-DE']: '@freestuff_dev_606026'
         },
 
         non_trash: {
