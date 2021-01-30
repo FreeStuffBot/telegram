@@ -24,12 +24,8 @@ module.exports = {
             ['de-DE']: '@freestuff_dev_606026'
         },
 
-        non_trash: {
             ['en-US']: '@freestuff_english_us_561020'
-        },
-
-        trash: {
-            ['en-US']: '@freestuff_english_us_trash_744068'
+        announcements: {
         }
     },
 
