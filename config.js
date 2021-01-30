@@ -21,14 +21,17 @@ module.exports = {
     channels: {
         testing: {
             ['en-US']: '@freestuff_dev_606026',
-            ['de-DE']: '@freestuff_dev_606026'
+            ['de-DE']: '@freestuff_dev_606026',
+            ['ar-SY']: '@freestuff_dev_606026',
         },
 
         announcements: {
             ['en-US']: '@freestuff_english_us_561020',
-            ['de-DE']: '@freestuff_german_370794'
+            ['ar-SY']: '@freestuff_arabic_936767',
+            ['de-DE']: '@freestuff_german_370794',
+            
         }
     },
 
-    languages: [ 'en-US', 'de-DE' ] //It's okay if a language is missing from the configured channels list.
+    languages: [ 'en-US', 'ar-SY', 'de-DE' ] //It's okay if a language is missing from the configured channels list.
 }
