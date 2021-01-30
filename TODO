@@ -3,6 +3,6 @@
 ✔ Use the language formatting option of the FreeStuff API. @done(21-01-30 21:05)
 ✘ Filter trash games and post them into their own channel. @cancelled(21-01-30 20:54)
 ✔ Parse the games flags and format them into the message. @done(21-01-30 21:04)
-☐ Create the other languages channels.
+✔ Create the other languages channels. @done(21-01-31 00:48)
 ☐ Create the interactive menu for viewing the available games channels.
 ☐ Enable to bot to run in hosted mode (with a server), while still able to work as a server-less bot.
