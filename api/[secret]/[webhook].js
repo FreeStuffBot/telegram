@@ -1,4 +1,3 @@
-const { switchToChat } = require('telegraf/typings/button');
 const freestuff_webhook = require('../../webhooks/freestuff');
 const telegram_webhook = require('../../webhooks/telegram');
 
