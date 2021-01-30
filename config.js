@@ -30,5 +30,7 @@ module.exports = {
         trash: {
             ['english-us']: '@freestuff_english_us_trash_744068'
         }
-    }
+    },
+
+    languages: [ 'en-US', 'de-DE' ] //It's okay if a language is missing from the configured channels list.
 }
