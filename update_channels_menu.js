@@ -18,16 +18,18 @@ bot.telegram.sendMessage('@thefreestuff',
 
         "<b>Welcome to FreeStuff!</b>",
         "",
-        "We announce available free games offers on Steam, Epic Games Store, and many more!",
-        "Please select the channel for your language and subscribe to receive free games announcements 😉",
+        "We keep you up to date with free games from Steam, Epic Games, and all other major Platforms!",
+        "Please select the channel for your language and subscribe to receive a notification every time a game gets a -100% discount 😉",
         "",
-        "<i><b>TODO:</b> Write a proper introduction message.</i>",
-        "🚧⚠ <b><u>Note: The bot is still under development</u></b> ⚠🚧",
+        'For more information visit <a href="https://freestuffbot.xyz/">freestuffbot.xyz</a>',
+        "",
+        "(<em>🚧⚠ Note: The bot is still under development ⚠🚧</em>)",
 
     ].join('\n'),
 
     {
         reply_markup: { inline_keyboard: menu },
+        disable_web_page_preview: true,
         parse_mode: 'HTML'
     }
 );
