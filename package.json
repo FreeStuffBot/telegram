@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "configure": "node dist/scripts/configure.js",
     "long_polling": "node dist/scripts/long_polling.js",
     "webhook_info": "node dist/scripts/webhook_info.js"
   },
