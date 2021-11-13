@@ -12,7 +12,7 @@ export default bot;
 bot.start((ctx) => ctx.replyWithHTML(`
 You have just met the <b>FreeStuff Master</b>. Who shall only deal with his grand masters.
 
-If you're looking for guidance, please check our channel <a href="https://t.me/thefreestuff">FreeStuff</a>
+If you're looking for guidance, our channel <a href="https://t.me/thefreestuff">FreeStuff</a> is there for you.
 `));
 
 commandsDescriptions['whoami'] = 'Show the details of the user sending this message.';
