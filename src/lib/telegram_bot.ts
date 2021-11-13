@@ -1,5 +1,5 @@
-
 import { Telegraf } from 'telegraf';
+import * as config from './config';
 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 if (!BOT_TOKEN) throw new Error('The TELEGRAM_BOT_TOKEN has not been set!');
@@ -26,3 +26,15 @@ bot.command('whoami', (ctx) => ctx.replyWithHTML(`
 <b>Language code:</b> <code>${new String(ctx.from.language_code)}</code>
 <b>Bot:</b> <code>${new String(ctx.from.is_bot)}</code>
 `));
+
+bot.use(async (ctx, next) => {
+    if (ctx.updateType !== 'message') return next();
+    if (config.grandMasters.some((id) => id === ctx?.from?.id)) return next();
+    ctx.replyWithHTML(`
+I shall only deal with my grand masters.
+If you're looking for guidance, our channel <a href="https://t.me/thefreestuff">FreeStuff</a> is there for you.
+    `);
+});
+
+commandsDescriptions['ping'] = 'The classical ping pong 🏓';
+bot.command('ping', (ctx) => ctx.reply('Pong 🏓'));
