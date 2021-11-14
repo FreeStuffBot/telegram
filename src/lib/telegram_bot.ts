@@ -54,7 +54,7 @@ bot.command('all_games', async (ctx) => ctx.replyWithHTML(`
 export async function sendGameMessage(chatId: string | number, gameData: any, locale: string) {
     const localization = gameData.localized[locale];
 
-    console.log('Sending a message for the game', gameData.id, 'in chat', chatId);
+    console.log('sending a message for the game', gameData.id, 'in chat', chatId);
     
     const caption = [
         `<b>${localization.header}</b>`,
@@ -94,7 +94,7 @@ bot.command('game_details', async (ctx) => {
  * @param gameData It's expected to contain the needed locales.
  * @param testing Whether to use testing or production channels.
  */
-export async function announceGame(gameData: any, testing: boolean | string) {
+export async function announceGame(gameData: any, testing: boolean | undefined) {
     const channels = testing ? config.testingChannels : config.announcementChannels;
 
     console.log('announcing the game', gameData.id);
@@ -109,7 +109,7 @@ export async function announceGame(gameData: any, testing: boolean | string) {
  * Fetchs the data for a group of games and announces them.
  * @param testing Whether to use testing or production channels.
  */
-export async function fetchAndAnnounceGames(gamesIds: number[], testing: boolean | string) {
+export async function fetchAndAnnounceGames(gamesIds: number[], testing: boolean | undefined) {
     const channels = testing ? config.testingChannels : config.announcementChannels;
     const locales = _.uniq([...Object.keys(config.testingChannels), ...Object.keys(config.announcementChannels)]);
 
@@ -119,9 +119,35 @@ export async function fetchAndAnnounceGames(gamesIds: number[], testing: boolean
         language: locales,
     }, true);
 
-    const sortedGames = Object.values(games).sort((a, b) => b.id - a.id);
+    const sortedGames = Object.values(games).sort((a, b) => b.until.getTime() - a.until.getTime());
 
     for (let gameDetails of sortedGames) {
         await announceGame(gameDetails, testing);
     }
 }
+
+commandsDescriptions['test_announce'] = 'Does a test announcement for a game(s) 🛠️';
+bot.command('test_announce', async (ctx) => {
+    const rawGamesIds = ctx.message.text.split(' ')[1];
+    if (!rawGamesIds) return ctx.replyWithHTML(`Usage: <code>/test_announce (ids)</code>\n- Multiple ids can be listed separated by comas.`);
+
+    const gamesIds = rawGamesIds.split(',').map((id) => Number.parseInt(id));
+
+    await ctx.replyWithChatAction('typing');
+    await fetchAndAnnounceGames(gamesIds, true);
+
+    return ctx.reply('The announcement has been done ✅');
+});
+
+commandsDescriptions['announce'] = 'Announces a game(s) 🎮';
+bot.command('announce', async (ctx) => {
+    const rawGamesIds = ctx.message.text.split(' ')[1];
+    if (!rawGamesIds) return ctx.replyWithHTML(`Usage: <code>/announce (ids)</code>\n- Multiple ids can be listed separated by comas.`);
+
+    const gamesIds = rawGamesIds.split(',').map((id) => Number.parseInt(id));
+
+    await ctx.replyWithChatAction('typing');
+    await fetchAndAnnounceGames(gamesIds, false);
+
+    return ctx.reply('The announcement has been done ✅');
+});
