@@ -1,4 +1,6 @@
 import { Telegraf } from 'telegraf';
+import * as _ from 'lodash';
+
 import * as config from './config';
 
 import { api } from './freestuff_api';
@@ -52,10 +54,12 @@ bot.command('all_games', async (ctx) => ctx.replyWithHTML(`
 export async function sendGameMessage(chatId: string | number, gameData: any, locale: string) {
     const localization = gameData.localized[locale];
 
+    console.log('Sending a message for the game', gameData.id, 'in chat', chatId);
+    
     const caption = [
         `<b>${localization.header}</b>`,
         `<b>${gameData.title}</b>`,
-        `<s>${localization.org_price_usd}/${localization.org_price_eur}</s> <b>${localization.free}</b> ${localization.until} • ${ [localization.platform, ...localization.flags].join(' • ') }`,
+        `<s>${localization.org_price_usd}/${localization.org_price_eur}</s> <b>${localization.free}</b> ${localization.until} • ${[localization.platform, ...localization.flags].join(' • ')}`,
         `<i>${localization.footer.replace('https://freestuffbot.xyz/', '<a href="https://freestuffbot.xyz/">freestuffbot.xyz</a>')}</i>`,
     ].join('\n');
 
@@ -83,3 +87,41 @@ bot.command('game_details', async (ctx) => {
 
     return sendGameMessage(ctx.chat.id, details, locale ?? 'en-US');
 });
+
+/**
+ * Announces a game into the channels.
+ * 
+ * @param gameData It's expected to contain the needed locales.
+ * @param testing Whether to use testing or production channels.
+ */
+export async function announceGame(gameData: any, testing: boolean | string) {
+    const channels = testing ? config.testingChannels : config.announcementChannels;
+
+    console.log('announcing the game', gameData.id);
+
+    for (let locale in channels) {
+        let channelId = channels[locale];
+        await sendGameMessage(channelId, gameData, locale);
+    }
+}
+
+/**
+ * Fetchs the data for a group of games and announces them.
+ * @param testing Whether to use testing or production channels.
+ */
+export async function fetchAndAnnounceGames(gamesIds: number[], testing: boolean | string) {
+    const channels = testing ? config.testingChannels : config.announcementChannels;
+    const locales = _.uniq([...Object.keys(config.testingChannels), ...Object.keys(config.announcementChannels)]);
+
+    console.log('fetching the details of games', gamesIds);
+
+    const games = await api.getGameDetails(gamesIds, 'info', {
+        language: locales,
+    }, true);
+
+    const sortedGames = Object.values(games).sort((a, b) => b.id - a.id);
+
+    for (let gameDetails of sortedGames) {
+        await announceGame(gameDetails, testing);
+    }
+}
