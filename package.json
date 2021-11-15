@@ -3,11 +3,10 @@
   "version": "2.0.0",
   "description": "The Telegram support for freestuffbot.xyz",
   "scripts": {
-    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "configure": "node dist/scripts/configure.js",
-    "long_polling": "node dist/scripts/long_polling.js",
-    "webhook_info": "node dist/scripts/webhook_info.js"
+    "configure": "ts-node scripts/configure.ts",
+    "long_polling": "ts-node scripts/long_polling.ts",
+    "webhook_info": "ts-node scripts/webhook_info.ts"
   },
   "repository": {
     "type": "git",
@@ -29,6 +28,7 @@
   "devDependencies": {
     "@types/lodash": "^4.14.176",
     "@types/node": "^16.11.7",
+    "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   }
 }
