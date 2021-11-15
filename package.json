@@ -4,10 +4,10 @@
   "description": "The Telegram support for freestuffbot.xyz",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "configure": "ts-node scripts/configure.ts",
-    "long_polling": "ts-node scripts/long_polling.ts",
-    "webhook_info": "ts-node scripts/webhook_info.ts",
-    "set_webhook": "ts-node scripts/set_webhook.ts"
+    "configure": "ts-node src/scripts/configure.ts",
+    "long_polling": "ts-node src/scripts/long_polling.ts",
+    "webhook_info": "ts-node src/scripts/webhook_info.ts",
+    "set_webhook": "ts-node src/scripts/set_webhook.ts"
   },
   "repository": {
     "type": "git",
