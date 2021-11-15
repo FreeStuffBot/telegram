@@ -9,6 +9,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     try {
         await bot.handleUpdate(req.body, res);
     } catch (error) {
+        console.error(error);
         return res.writeHead(500).end(res.statusMessage + '\n' + new String(error));
     }
 };

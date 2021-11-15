@@ -1,7 +1,8 @@
 import { FreeStuffApi } from 'freestuff';
 
-const API_TOKEN = process.env.FREESTUFF_API_TOKEN;
-if (!API_TOKEN) throw new Error('The FREESTUFF_API_TOKEN has not been set!');
+const API_TOKEN_ENV = process.env.FREESTUFF_API_TOKEN;
+if (!API_TOKEN_ENV) throw new Error('The FREESTUFF_API_TOKEN has not been set!');
+export const API_TOKEN = API_TOKEN_ENV;
 
 const IS_PARTNER = !!process.env.FREESTUFF_API_PARTNER;
 
