@@ -5,8 +5,9 @@ import * as config from './config';
 
 import { api } from './freestuff_api';
 
-const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-if (!BOT_TOKEN) throw new Error('The TELEGRAM_BOT_TOKEN has not been set!');
+const BOT_TOKEN_ENV = process.env.TELEGRAM_BOT_TOKEN;
+if (!BOT_TOKEN_ENV) throw new Error('The TELEGRAM_BOT_TOKEN has not been set!');
+export const BOT_TOKEN = BOT_TOKEN_ENV;
 
 export const bot = new Telegraf(BOT_TOKEN);
 export const commandsDescriptions: Record<string, string> = {};

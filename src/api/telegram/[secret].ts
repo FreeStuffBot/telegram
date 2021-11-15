@@ -1,9 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-
-const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-if (!BOT_TOKEN) throw new Error('The TELEGRAM_BOT_TOKEN has not been set!');
-
-import { bot } from '../../lib/telegram_bot';
+import { bot, BOT_TOKEN } from '../../lib/telegram_bot';
 
 export default async (req: VercelRequest, res: VercelResponse) => {
     const { secret } = req.query;
