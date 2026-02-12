@@ -41,13 +41,15 @@ function sendProductMessage(product: Product, to: TelegramChannel) {
     ? `until ${untilFormatter.format(product.until)}`
     : '';
 
+  let statusString = `<s>${priceString}</s> <b>FREE</b>`;
+
   const extra: string[] = [];
   if (product.rating !== undefined && product.rating >= 0) {
     extra.push(`${Math.round(product.rating * 50) / 10}/5 ★`);
   }
   switch (product.type) {
     case 'timed':
-      extra.push('Free Weekend');
+      statusString = 'Free Weekend';
       break;
     case 'other':
       extra.push('DLC / Addon');
@@ -66,7 +68,7 @@ function sendProductMessage(product: Product, to: TelegramChannel) {
       `<b>${product.title}</b>`,
       `<i>${product.description}</i>`,
       '',
-      `<s>${priceString}</s> <b>FREE</b> ${untilString}`,
+      `${statusString} ${untilString}`,
       extra.length ? extra.map(e => `<b>${e}</b>`).join(' — ') : null,
       '',
       `via <a href="https://freestuffbot.xyz/">freestuffbot.xyz</a>`
