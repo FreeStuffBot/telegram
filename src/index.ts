@@ -42,7 +42,7 @@ function sendProductMessage(product: Product, to: TelegramChannel) {
     : '';
 
   const extra: string[] = [];
-  if (product.rating !== undefined) {
+  if (product.rating !== undefined && product.rating >= 0) {
     extra.push(`${Math.round(product.rating * 50) / 10}/5 ★`);
   }
   switch (product.type) {
