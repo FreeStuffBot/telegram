@@ -2,6 +2,12 @@ import { on, Product, Store } from 'freestuff'
 import { channelMeta, sendMessage, TelegramChannel } from './telegram'
 
 
+type HonoEvent = {
+  $hono: {
+    executionCtx: ExecutionContext
+  }
+}
+
 function getButtonText(store: Store) {
   switch (store) {
     case 'steam':
@@ -25,7 +31,7 @@ function sendProductMessage(product: Product, to: TelegramChannel) {
     style: 'currency',
     currency: price.currency,
   });
-  const priceString = priceFormatter.format(price.oldValue);
+  const priceString = priceFormatter.format(price.oldValue / 100);
 
   const untilFormatter = new Intl.DateTimeFormat(channelMeta[to].preferredLanguage, {
     dateStyle: 'long',
@@ -71,17 +77,23 @@ function sendProductMessage(product: Product, to: TelegramChannel) {
   });
 }
 
+async function sendToAll(products: Product[]) {
+  for (const product of products) {
+    await sendProductMessage(product, 'enUs');
+    await sendProductMessage(product, 'enGb');
+    await sendProductMessage(product, 'de');
+    // await sendProductMessage(product, 'dev');
+  }
+}
+
 
 on('fsb:event:ping', (event) => {
   console.log('Received ping event:', event);
 });
 
-on('fsb:event:announcement_created', async (event) => {
-  for (const product of event.data.resolvedProducts) {
-    await sendProductMessage(product, 'enUs');
-    await sendProductMessage(product, 'enGb');
-    await sendProductMessage(product, 'de');
-  }
+on('fsb:event:announcement_created', (event) => {
+  const ctx = (event as typeof event & HonoEvent).$hono.executionCtx;
+  ctx.waitUntil(sendToAll(event.data.resolvedProducts));
 });
 
 export { default } from './server';
