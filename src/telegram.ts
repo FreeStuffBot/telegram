@@ -35,31 +35,13 @@ export type MessageOptions = {
 }
 
 export async function sendMessage(opts: MessageOptions) {
-	console.log('sendMessage to ' + opts.to + ', env ' + !!env?.TELEGRAM_BOT_TOKEN)
 	if (!env)
 		throw new Error('Environment variables not loaded');
 
 	try {
 		const telegramUrl = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/${opts.imageUrl ? 'sendPhoto' : 'sendMessage'}`;
 
-		console.log(JSON.stringify({
-			"chat_id": channelMeta[opts.to].chat,
-			"photo": opts.imageUrl ?? undefined,
-			[ opts.imageUrl ? 'caption' : 'text' ]: opts.text,
-			"parse_mode": "HTML",
-			"reply_markup": {
-				"inline_keyboard": [
-					[
-						{
-							"text": opts.buttonText,
-							"url": opts.buttonUrl
-						}
-					]
-				]
-			}
-		}))
-
-		const res = await fetch(telegramUrl, {
+		await fetch(telegramUrl, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -79,7 +61,6 @@ export async function sendMessage(opts: MessageOptions) {
 				}
 			}),
 		});
-		console.log(`res --->>> ${await res.text}`)
 	} catch (err) {
 		console.error(err);
 	}
