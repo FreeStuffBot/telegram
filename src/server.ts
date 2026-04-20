@@ -5,7 +5,7 @@ interface Env {
 	TELEGRAM_BOT_TOKEN: string;
 }
 
-const publicKey = 'MCowBQYDK2VwAyEANmqbt6GQgJGjbiZNB4K1yG9/prp7soLJ9/JlJCU4Kag=';
+const publicKey = 'MCowBQYDK2VwAyEANmqbt6GQgJGjbiZNB4K1yG9/prp7soLJ9/JlJCU4Kag='; // FreeStuff API public key
 let env: Env | null = null;
 
 const app = new Hono<{ Bindings: Env }>();
