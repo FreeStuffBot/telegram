@@ -35,7 +35,7 @@ function sendProductMessage(product: Product, to: TelegramChannel) {
 
   const untilFormatter = new Intl.DateTimeFormat(channelMeta[to].preferredLanguage, {
     dateStyle: 'long',
-    timeStyle: 'short'
+    timeStyle: 'full'
   });
   const untilString = product.until
     ? `until ${untilFormatter.format(product.until)}`
