@@ -88,7 +88,6 @@ async function sendToAll(products: Product[]) {
   }
 }
 
-
 on('fsb:event:ping', (event) => {
   console.log('Received ping event:', event);
 });
