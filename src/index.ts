@@ -204,9 +204,6 @@ const testProduct = parseProduct({
 
 import app from './server';
 
-app.get('/test', async (c) => {
-  await sendToAll([testProduct]);
-  return c.text('Test product sent to all channels');
-});
+// removed test endpoint 
 
 export default app;
