@@ -7,6 +7,7 @@
 	"name": "telegram",
 	"main": "src/index.ts",
 	"compatibility_date": "2026-02-10",
+	"keep_vars": true,
 	"observability": {
 		"enabled": true
 	},
