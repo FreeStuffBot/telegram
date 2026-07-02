@@ -36,14 +36,10 @@ function getLocalizedDescription(
   preferredLang: string
 ): string | null {
   if (!descriptions || descriptions.length === 0) return null
-
-  let found = descriptions.find(d => d.lang === preferredLang)
-
-  if (!found) {
-    found = descriptions.find(d => d.lang === 'en-US')
-  }
-
-  return found?.text ?? null
+  return (
+    descriptions.find(d => d.lang === preferredLang) ??
+    descriptions.find(d => d.lang === 'en-US')
+  )?.text ?? null
 }
 
 function getPrimaryProductUrl(product: Product): string {
@@ -214,11 +210,20 @@ async function buildProductMessage(product: Product, to: TelegramChannel) {
 }
 
 export async function sendProductPost(product: Product, to: TelegramChannel = 'dev') {
+  console.log(`Processing product: "${product.title}" (id: ${product.id}) -> channel: ${to}`)
   return sendMessage(await buildProductMessage(product, to))
 }
 
 export async function sendToAll(products: Product[]) {
   const channelMeta = getChannelMeta()
+  const channelCount = Object.keys(channelMeta).length
+  console.log(`sendToAll: ${products.length} product(s), ${channelCount} configured channel(s)`)
+
+  if (channelCount === 0) {
+    console.warn('No channels configured — nothing will be posted. Is TELEGRAM_CHANNELS set?')
+    return
+  }
+
   const languages = [...new Set(Object.values(channelMeta).map(channel => channel.preferredLanguage))]
   if (languages.length > 0) {
     await warmTranslations(languages)

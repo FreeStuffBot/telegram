@@ -32,6 +32,11 @@ app.all('*', (c, next) => {
     console.warn('   Set it in your .env file (for local development) or configure it in wrangler.jsonc/secrets')
   }
 
+  if (!env?.TELEGRAM_CHANNELS) {
+    console.warn('⚠️  WARNING: TELEGRAM_CHANNELS environment variable is not set — no posts will be sent!')
+    console.warn('   Set it as a CF secret: wrangler secret put TELEGRAM_CHANNELS')
+  }
+
   return next()
 })
 
@@ -85,6 +90,7 @@ app.post('/product', async (c) => {
   }
 
   const body = await c.req.json().catch(() => null)
+  console.log('/product request body:', JSON.stringify(body))
   const productId = String(body?.productId ?? c.req.query('productId') ?? '').trim()
   if (!productId) {
     return c.json({ error: 'productId is required' }, 400)

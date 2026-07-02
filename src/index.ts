@@ -13,6 +13,7 @@ on('fsb:event:ping', (event) => {
 });
 
 on('fsb:event:announcement_created', (event) => {
+  console.log('/event announcement_created:', JSON.stringify(event.data))
   const ctx = (event as typeof event & HonoEvent).$hono.executionCtx;
   ctx.waitUntil(sendToAll(event.data.resolvedProducts));
 });
